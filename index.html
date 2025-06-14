@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Amor 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffe6e6);
+      text-align: center;
+      padding: 30px 15px;
+      color: #800040;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #d6336c;
+      margin-bottom: 10px;
+    }
+
+    .foto-casal {
+      width: 300px;
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      margin: 20px 0;
+      border: 5px solid white;
+    }
+
+    .contador {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin: 15px 0;
+      color: #c2185b;
+    }
+
+    .texto-romantico {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 600px;
+      margin: 20px auto;
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #4b004f;
+    }
+
+    .coração {
+      font-size: 2em;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #a0527d;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Nosso Amor 💖</h1>
+
+  <img src="casal.jpg" alt="Foto do casal" class="foto-casal" />
+
+  <div class="contador" id="diasJuntos">Calculando...</div>
+
+  <div class="texto-romantico">
+    Oi minha princesa, mais uma vez comemorando essa data juntos, saiba que você é muito especial para mim.  
+<br><br>
+Cada dia que passa quero cada vez mais estar ao seu lado.  
+Quero dividir a minha vida com você, pois tudo ao seu lado fica melhor.  
+<br><br>
+Eu te amo infinitamente. 💖
+  </div>
+
+  <div class="coração">❤️</div>
+
+  <footer>
+    Feito com amor por nós dois ✨
+  </footer>
+
+  <script>
+    const dataInicio = new Date(2021, 3, 28); // ano, mês (0 = janeiro), dia
+    const diasJuntos = document.getElementById("diasJuntos");
+
+    function calcularTempoJuntos(inicio) {
+      const agora = new Date();
+
+      let anos = agora.getFullYear() - inicio.getFullYear();
+      let meses = agora.getMonth() - inicio.getMonth();
+      let dias = agora.getDate() - inicio.getDate();
+
+      if (dias < 0) {
+        meses--;
+        const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+        dias += mesAnterior.getDate();
+      }
+
+      if (meses < 0) {
+        anos--;
+        meses += 12;
+      }
+
+      return { anos, meses, dias };
+    }
+
+    function atualizarContador() {
+      const tempo = calcularTempoJuntos(dataInicio);
+      diasJuntos.innerText =
+        `Estamos juntos há ${tempo.anos} ${tempo.anos === 1 ? 'ano' : 'anos'}, ` +
+        `${tempo.meses} ${tempo.meses === 1 ? 'mês' : 'meses'} e ` +
+        `${tempo.dias} ${tempo.dias === 1 ? 'dia' : 'dias'} 💞`;
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 60 * 1000);
+  </script>
+
+</body>
+</html>
